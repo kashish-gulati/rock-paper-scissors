@@ -14,20 +14,20 @@
             else return "scissors";
         }
 
-        function roundRPS(player_move) {
-            let computer_move = getRPS();
-            player_move = player_move.toLowerCase();
-            if (player_move == "rock") {
-                if (computer_move == "rock") return "draw";
-                else if (computer_move == "paper") return "loss";
+        function roundRPS(player1_move, player2_move = getRPS()) {
+            player1_move = player1_move.toLowerCase();
+            player2_move = player2_move.toLowerCase();
+            if (player1_move == "rock") {
+                if (player2_move == "rock") return "draw";
+                else if (player2_move == "paper") return "loss";
                 else return "win";
-            } else if (player_move == "paper") {
-                if (computer_move == "rock") return "win";
-                else if (computer_move == "paper") return "draw";
+            } else if (player1_move == "paper") {
+                if (player2_move == "rock") return "win";
+                else if (player2_move == "paper") return "draw";
                 else return "loss";
             } else {
-                if (computer_move == "rock") return "loss";
-                else if (computer_move == "paper") return "win";
+                if (player2_move == "rock") return "loss";
+                else if (player2_move == "paper") return "win";
                 else return "draw";
             }
         }
