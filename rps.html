@@ -15,8 +15,8 @@
         }
 
         function roundRPS(player1_move, player2_move = getRPS()) {
-            player1_move = player1_move.toLowerCase();
-            player2_move = player2_move.toLowerCase();
+            player1_move = player1_move.toLowerCase().trim();
+            player2_move = player2_move.toLowerCase().trim();
             if (player1_move == "rock") {
                 if (player2_move == "rock") return "draw";
                 else if (player2_move == "paper") return "loss";
@@ -30,6 +30,35 @@
                 else if (player2_move == "paper") return "win";
                 else return "draw";
             }
+        }
+
+        function gameRPS() {
+            let i = 0,
+                user_wins = 0,
+                computer_wins = 0;
+            let user_move, computer_move, result, winner;
+            while (i < 5) {
+                user_move = prompt("Enter Your Move");
+                computer_move = getRPS();
+                result = roundRPS(user_move, computer_move);
+                if (result == "win") {
+                    i++;
+                    user_wins++;
+                } else if (result == "loss") {
+                    i++;
+                    computer_wins++;
+                }
+                alert(`Your Move : ${user_move}\nComputer Move : ${computer_move}\nResult : ${result}\nYour Wins : ${user_wins}\nComputer Wins : ${computer_wins}`);
+                if (computer_wins == 3) {
+                    winner = "Computer";
+                    break;
+                } else if (user_wins == 3) {
+                    winner = "User";
+                    break;
+                }
+            }
+            alert(`Winner : ${winner}`);
+            console.log(winner);
         }
     </script>
 </body>
